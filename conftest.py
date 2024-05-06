@@ -7,8 +7,6 @@ from data.urls import MICE_PAGE_URL, MOUSE_SEARCH_PAGE_URL
 from pages.mice_page import MicePage
 from pages.mice_search_page import MiceSearchPage
 from utils import save_data_to_file
-from browsermobproxy import Server
-from msedge.selenium_tools import Edge
 
 
 @pytest.fixture(scope="session", autouse=True)

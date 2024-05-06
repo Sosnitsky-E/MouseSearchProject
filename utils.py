@@ -1,5 +1,4 @@
 
-
 import json
 
 from selenium import webdriver
@@ -22,7 +21,7 @@ def save_data_to_file():
     options.add_argument('--headless')
     driver = webdriver.Edge(options=options)
     driver.get("https://www.rocketjumpninja.com/products/mice")
-    # Найти все строки в таблице
+    # Find all rows in a table
     rows = wait(driver, 15).until(EC.visibility_of_all_elements_located(MiceLocators.ALL_MICE_TBL))
     mouse_data_list = []
 
@@ -36,7 +35,7 @@ def save_data_to_file():
         grip_width_cm = cells[5].text
         grip_width_inches = cells[6].text
 
-        # Создание словаря с данными для текущей строки
+        # Creating a dictionary with data for the current row
         mouse_data = {
             "Name": name,
             "Weight (g)": weight,
@@ -46,13 +45,13 @@ def save_data_to_file():
             "Grip Width (cm)": grip_width_cm,
             "Grip Width (inches)": grip_width_inches
         }
-        # Добавление словаря в список
+        # Adding a dictionary to the list
         mouse_data_list.append(mouse_data)
 
-    # Путь к файлу, куда нужно сохранить JSON
+    # Path to the file where you want to save the JSON
     file_path = "data/data.json"
 
-    # Сохранение списка словарей в файл JSON
+    # Saving a list of dictionaries to a JSON file
     with open(file_path, "w") as json_file:
         json.dump(mouse_data_list, json_file)
 

@@ -18,5 +18,5 @@
 
 - Run command pip install -r requirements.txt
 
-- After, execute pytest -s -v to run tests.(for unning positive or negative test, execure :  pytest -s -v -m negative ( pytest -s -v -m negative))
+- After, execute pytest -s -v to run tests.(for running positive or negative test, execute :  pytest -s -v -m negative ( pytest -s -v -m positive))
 
