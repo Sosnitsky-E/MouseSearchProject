@@ -95,8 +95,7 @@ class MiceSearchPage(BasePage):
             allure.attach(self.driver.get_screenshot_as_png(), name='Screenshot', attachment_type=AttachmentType.PNG)
         return actua_alert_text
 
-    allure.step("Check if the mice search table results match the database search results.")
-
+    @allure.step("Check if the mice search table results match the database search results.")
     def check_search_results(self, h_width=9.0, h_length=15.0, grip_type='CLAW', leniency=2, wireless='false',
                              lefthanded='false', buttons=-1, shape='both'):
 
