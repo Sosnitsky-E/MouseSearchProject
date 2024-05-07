@@ -1,0 +1,41 @@
+name: Automated tests
+
+on:
+  workflow_dispatch:
+    inputs:
+      deployment_target:
+        description: Choose target
+        required: true
+        default: positive
+        type: choice
+        options:
+          - positive_tests
+          - negative_tests
+          - all_tests
+
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+      - name: Install Chrome
+        run: sudo apt-get install google-chrome-stable
+      - name: install dependencies
+        run: pip install -r requirements.txt
+      - name: positive_tests
+        if: "github.event.inputs.deployment_target == 'positive_tests'"
+        run: pytest -s -v -m positive
+      - name: negative_tests
+        if: "github.event.inputs.deployment_target == 'negative_tests'"
+        run: pytest -s -v -m negative
+      - name: all_tests
+        if: "github.event.inputs.deployment_target == 'all_tests'"
+        run: pytest -s -v
