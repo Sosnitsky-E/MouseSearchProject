@@ -49,7 +49,7 @@ def save_data_to_file():
         mouse_data_list.append(mouse_data)
 
     # Path to the file where you want to save the JSON
-    file_path = "data/data.json"
+    file_path = "data.json"
 
     # Saving a list of dictionaries to a JSON file
     with open(file_path, "w") as json_file:

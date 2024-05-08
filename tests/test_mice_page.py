@@ -67,8 +67,8 @@ class TestMicePage:
     @pytest.mark.positive
     @pytest.mark.xfail(reason="fixing this bug right now")
     def test_matching_number_of_mice(self, mouse_search_page_fixture,
-                                     width=ValuesForVerification.parameters_inches["width"][1],
-                                     length=ValuesForVerification.parameters_inches["length"][1]):
+                                     width=ValuesForVerification.parameters_cm["width"][1],
+                                     length=ValuesForVerification.parameters_cm["length"][1]):
         mouse_search_page_fixture.open_page()
         mouse_search_page_fixture.fill_length(length)
         mouse_search_page_fixture.fill_width(width)

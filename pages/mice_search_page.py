@@ -88,12 +88,15 @@ class MiceSearchPage(BasePage):
     @allure.step("Checking that notification appears if the fields are not filled in.")
     def check_field_filling_notification(self):
         """Returns the notification text if the fields are not filled in."""
-        self.alert_is_present()
-        alert = self.driver.switch_to.alert
-        actua_alert_text = alert.text
-        with allure.step('Make screenshot'):
-            allure.attach(self.driver.get_screenshot_as_png(), name='Screenshot', attachment_type=AttachmentType.PNG)
-        return actua_alert_text
+        try:
+            self.alert_is_present()
+            alert = self.driver.switch_to.alert
+            actua_alert_text = alert.text
+            return actua_alert_text
+        except:
+            with allure.step('Make screenshot'):
+                allure.attach(self.driver.get_screenshot_as_png(), name='Screenshot',
+                              attachment_type=AttachmentType.PNG)
 
     @allure.step("Check if the mice search table results match the database search results.")
     def check_search_results(self, h_width=9.0, h_length=15.0, grip_type='CLAW', leniency=2, wireless='false',
@@ -108,7 +111,5 @@ class MiceSearchPage(BasePage):
                                                                       h_params["min_width"])
 
         actual_table_results = self.table_result()
-        with allure.step('Make screenshot'):
-            allure.attach(self.driver.get_screenshot_as_png(), name='Screenshot', attachment_type=AttachmentType.PNG)
 
         return len(actual_table_results) == len(expected_mice_list)
