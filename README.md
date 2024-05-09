@@ -1,4 +1,4 @@
-# Search_mouse_project
+# MouseSearchProject
         This project focuses on testing the search functionality of the Rocket Jump Ninja
     website for mouse reviews using Python.
 
