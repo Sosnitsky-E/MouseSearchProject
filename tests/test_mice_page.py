@@ -78,3 +78,15 @@ class TestMicePage:
                                                               h_width=width), \
             ("The number of mice found according to the entered criteria does not match the number of mice from the "
              "database")
+
+    @allure.description(
+        "The test verifies the sorting of the found mice by name in the alphabetical order.")
+    @pytest.mark.positive
+    def test_check_sort_by_name_alphabetical_order(self,mouse_search_page_fixture,width=ValuesForVerification.parameters_cm["width"][2],
+                                     length=ValuesForVerification.parameters_cm["length"][2]):
+        mouse_search_page_fixture.open_page()
+        mouse_search_page_fixture.fill_length(length)
+        mouse_search_page_fixture.fill_width(width)
+        mouse_search_page_fixture.click_search()
+        mouse_search_page_fixture.click_name_tab()
+        assert mouse_search_page_fixture.check_sort_by_name_alphabetical_order, "The sorting incorrect."

@@ -18,3 +18,4 @@ class MouseSearchLocators:
     LENIENCY_RADIO = By.CSS_SELECTOR,"input[name = 'leniency'][value = '3']"
 
     SELECT_MEASUREMENT = By.ID, "measurement"
+    SORT_BY_NAME = By.ID,"nameHeader"
