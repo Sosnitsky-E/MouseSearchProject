@@ -34,6 +34,7 @@ def driver(options):
     driver = webdriver.Edge(options=options)
     driver.maximize_window()
     yield driver
+    driver.close()
     driver.quit()
 
 
