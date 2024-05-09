@@ -113,3 +113,16 @@ class MiceSearchPage(BasePage):
         actual_table_results = self.table_result()
 
         return len(actual_table_results) == len(expected_mice_list)
+
+    def click_name_tab(self):
+        self.element_is_present(MouseSearchLocators.SORT_BY_NAME).click()
+
+    def check_sort_by_name_alphabetical_order(self):
+        actual_names = []
+        data_search_t = self.search_table_data(MouseSearchLocators.TABLE_ROWS)
+        for row in data_search_t:
+            actual_names.append(row['Name'])
+
+        expected_result = sorted(actual_names)
+        return expected_result == actual_names
+
